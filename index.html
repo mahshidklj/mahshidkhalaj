@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahshid Khalaj</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+
+        body {
+            background-color: #000;
+            color: #e5e7eb;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        section[id] {
+            scroll-margin-top: 120px;
+        }
+
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.15;
+            filter: blur(5px);
+        }
+
+
+        .font-orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(17, 24, 39, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+        }
+
+        .neon-text {
+            text-shadow:
+                0 0 5px rgba(74, 77, 224, 0.7),
+                0 0 10px rgba(74, 77, 224, 0.5),
+                0 0 20px rgba(74, 77, 224, 0.3),
+                0 0 40px rgba(74, 77, 224, 0.2);
+            color: #4a4de0;
+        }
+
+        nav a:hover {
+            text-shadow:
+                0 0 7px rgba(74, 77, 224, 0.9),
+                0 0 15px rgba(74, 77, 224, 0.6),
+                0 0 25px rgba(74, 77, 224, 0.4);
+        }
+
+        @media (min-width: 1024px) {
+            .cursor {
+                width: 20px;
+                height: 20px;
+                border: 2px solid #4a4de0;
+                border-radius: 50%;
+                position: fixed;
+                pointer-events: none;
+                z-index: 9999;
+                transform: translate(-50%, -50%);
+                transition: width 0.2s, height 0.2s, background-color 0.2s;
+            }
+
+            .cursor-grow {
+                width: 40px;
+                height: 40px;
+                background-color: rgba(74, 77, 224, 0.25);
+            }
+        }
+
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4a4de0;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #101f3d;
+        }
+        .hover\:text-blue-500:hover {
+            color: #4a4de0;
+        }
+        .bg-blue-800 {
+            background-color: #101f3d !important;
+        }
+        .bg-blue-800:hover {
+            background-color: #0c162c !important;
+        }
+        .border-blue-700 {
+            border-color: #101f3d !important;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <img id="bg-video" src="bg.gif" alt="Abstract background animation">
+
+    <div class="cursor"></div>
+
+    <header class="fixed top-0 left-0 w-full z-50 p-4 transition-all duration-300" id="navbar">
+        <div class="container mx-auto flex justify-between items-center glass-card p-4">
+            <a href="#home" class="text-xl sm:text-2xl font-orbitron font-bold neon-text">Mahshid Khalaj</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#work" class="text-lg text-gray-200 hover:text-blue-500 transition-all duration-300">Works</a>
+                <a href="#about" class="text-lg text-gray-200 hover:text-blue-500 transition-all duration-300">About</a>
+                <a href="#contact" class="text-lg text-gray-200 hover:text-blue-500 transition-all duration-300">Contact</a>
+            </nav>
+            <button id="menu-btn" class="md:hidden text-gray-200 z-50">
+                <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+                <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+    </header>
+    
+    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-90 z-40 hidden flex-col items-center justify-center space-y-8">
+        <a href="#work" class="text-3xl font-orbitron text-gray-200">Works</a>
+        <a href="#about" class="text-3xl font-orbitron text-gray-200">About</a>
+        <a href="#contact" class="text-3xl font-orbitron text-gray-200">Contact</a>
+    </div>
+
+    <main class="container mx-auto px-4 pb-20">
+        <section id="home" class="h-screen flex items-center justify-center text-center">
+            <div class="reveal">
+                <h1 class="text-4xl md:text-7xl font-orbitron font-bold mb-4 neon-text">Multidisciplinary Artist</h1>
+                <p class="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto">Animator, motion designer, and visual artist, running a label focused on audiovisual performances.</p>
+            </div>
+        </section>
+
+        <section id="work" class="py-20">
+            <div class="reveal">
+                <h2 class="text-3xl sm:text-4xl font-orbitron font-bold text-center mb-12 neon-text">Selected Works</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <a href="https://www.youtube.com/watch?v=tPVoglVS2oU" target="_blank" rel="noopener noreferrer" class="glass-card p-4 group overflow-hidden relative block" >
+                        <img src="1.jpg" class="w-full h-64 object-cover rounded-lg group-hover:scale-110 transition-transform duration-500" alt="Generali Minerali Dance Thumbnail">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-70 transition-all duration-300 flex flex-col justify-end p-4">
+                            <h3 class="text-xl sm:text-2xl font-orbitron text-white">Generali Minerali Dance</h3>
+                            <p class="text-gray-300">Makhunik Records</p>
+                        </div>
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=Lfnp-DYejoo" target="_blank" rel="noopener noreferrer" class="glass-card p-4 group overflow-hidden relative block">
+                        <img src="2.jpg" class="w-full h-64 object-cover rounded-lg group-hover:scale-110 transition-transform duration-500" alt="Hambazi Thumbnail">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-70 transition-all duration-300 flex flex-col justify-end p-4">
+                            <h3 class="text-xl sm:text-2xl font-orbitron text-white">Hambazi</h3>
+                            <p class="text-gray-300">Daygard & Ghazal Homayouni</p>
+                        </div>
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=C67kBicce08" target="_blank" rel="noopener noreferrer" class="glass-card p-4 group overflow-hidden relative block">
+                        <img src="3.jpg" class="w-full h-64 object-cover rounded-lg group-hover:scale-110 transition-transform duration-500" alt="Delrobotic Thumbnail">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-70 transition-all duration-300 flex flex-col justify-end p-4">
+                            <h3 class="text-xl sm:text-2xl font-orbitron text-white">Delrobotic</h3>
+                            <p class="text-gray-300">Najwa</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-20">
+            <div class="reveal glass-card p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
+                <img src="p.jpg" class="w-32 h-32 md:w-48 md:h-48 rounded-full object-cover border-4 border-blue-700 flex-shrink-0" alt="Artist portrait">
+                <div class="text-center md:text-left">
+                    <h2 class="text-3xl sm:text-4xl font-orbitron font-bold mb-4 neon-text">Mahshid Khalaj</h2>
+                    <p class="text-gray-300 leading-relaxed max-w-2xl">
+                        Mahshid Khalaj, a multidisciplinary artist and a graduate in Painting, with an extensive background in graphic design, animation, and motion graphics, began her practice in Generative Art and live audio-visual performance in 2022. She founded the Error-403 platform as a space for creating and presenting interactive and immersive works, and has since produced and performed innovative projects that explore the intersection of image and sound. Her works are grounded in the creation of interactive multimedia experiences, utilizing generative art techniques and audio-reactive systems to blur the boundaries between image and sound within the context of live performance, integrating visual and auditory data to construct immersive and experiential environments.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 text-center flex items-center justify-center min-h-[60vh]">
+            <div class="reveal">
+                <h2 class="text-3xl sm:text-4xl font-orbitron font-bold mb-4 neon-text">Get In Touch</h2>
+                <p class="text-lg text-gray-300 mb-8 max-w-md mx-auto"></p>
+                <a href="mailto:mahshidkhalajsheed@gmail.com" class="inline-block bg-blue-800 text-white font-bold font-orbitron py-3 px-6 sm:px-8 rounded-lg text-base sm:text-lg hover:bg-blue-800 transition-all duration-300 shadow-[0_0_15px_rgba(74,77,224,0.6)]">
+                    mahshidkhalajsheed@gmail.com
+                </a>
+                <div class="mt-12 flex justify-center space-x-6">
+                    <a href="https://www.instagram.com/mah_sheed__/" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Instagram</a>
+                    <a href="https://www.linkedin.com" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">LinkedIn</a>
+                    <a href="https://www.youtube.com/@sheedkhalaj" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Youtube</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+            <footer class="text-center p-8 text-gray-500 mt-12">
+        <p>&copy; 2025 Mahshid Khalaj. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const cursor = document.querySelector('.cursor');
+            if (window.matchMedia('(min-width: 1024px)').matches) {
+                document.addEventListener('mousemove', e => {
+                    cursor.style.left = e.clientX + 'px';
+                    cursor.style.top = e.clientY + 'px';
+                });
+
+                document.querySelectorAll('a, button, [class*="group"]').forEach(el => {
+                    el.addEventListener('mouseenter', () => cursor.classList.add('cursor-grow'));
+                    el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-grow'));
+                });
+            }
+
+
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('glass-card');
+                } else {
+                    navbar.classList.remove('glass-card');
+                }
+            });
+
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            const openIcon = document.getElementById('menu-open-icon');
+            const closeIcon = document.getElementById('menu-close-icon');
+
+            const toggleMenu = () => {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+                openIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
+            };
+
+            menuBtn.addEventListener('click', toggleMenu);
+            mobileMenuLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+            const contactLinks = document.querySelectorAll('a[href="#contact"]');
+            const scrollContactToCenter = () => {
+                const contact = document.getElementById('contact');
+                if (!contact) return;
+                contact.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            };
+            contactLinks.forEach(cl => {
+                cl.addEventListener('click', (e) => {
+                    if (cl.closest('#mobile-menu')) {
+                        e.preventDefault();
+                        toggleMenu();
+                        setTimeout(scrollContactToCenter, 250);
+                    } else {
+                        e.preventDefault();
+                        scrollContactToCenter();
+                    }
+                });
+            });
+
+            const aboutLinks = document.querySelectorAll('a[href="#about"]');
+            aboutLinks.forEach(al => {
+                al.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const about = document.getElementById('about');
+                    if (!about) return;
+                    about.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
